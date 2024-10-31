@@ -205,7 +205,6 @@ a {
     backdrop-filter: blur(5px);
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
     overflow: hidden;
 
 
@@ -233,29 +232,57 @@ a {
     font-size: 24px;
     color: #fff;
 }
-
 .bio {
-    margin: 0px 10px;
     position: relative;
-    margin-bottom: -14px;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
 }
 
 .pre-bio {
-    text-align: center;
+    position: relative;
     justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
-.pfp {}
-
 .pfp img {
-    width: 100%;
-    height: 500px;
-    border-radius: 8px;
     object-fit: cover;
-    margin: 0 auto;
-    border: 5px solid var(--bkg-color);
-    filter: grayscale(100%); /* Mengubah gambar menjadi hitam-putih */
+    width: 100%;
+    height: auto;
+    filter: grayscale(100);
+    transition: transform 1s ease;
+}
 
+.pfp img:hover {
+    filter: grayscale(0);
+    transform: scale(1.1);
+}
+
+/* Overlay teks di kanan atas */
+.text-overlay-top-right {
+    font-family: "Knewave", system-ui;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--accent-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 4em;
+    margin-right: 24px;
+}
+
+/* Overlay teks di kiri bawah */
+.text-overlay-bottom-left {
+    font-family: "Knewave", system-ui;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 3em;
+    margin-left: 24px;
 }
 
 

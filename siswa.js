@@ -89,19 +89,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const zodiacSign = getZodiacSign(birthDate);
             const daysUntilBirthday = calculateDaysUntilBirthday(birthDate);
 
-            profileDiv.innerHTML = `
-<div class="content">
-
-
-
+            profileDiv.innerHTML = `<div class="content">
     <div class="wallpaper">
-
-
-    <div class="name-preview">
-    <h1>${student.nama_lengkap} <b>*</b></h1>
-</div>
-
-
+        <div class="name-preview">
+            <h1>${student.nama_lengkap} <b>*</b></h1>
+        </div>
     </div>
 
     <div class="bio">
@@ -109,63 +101,60 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="pfp">
                 <img src="${student.foto_profil}" alt="${student.nama_panggilan}">
             </div>
-
         </div>
+
+        <!-- Teks overlay kanan atas -->
+        <div class="text-overlay-top-right">${age}</div>
+        <!-- Teks overlay kiri bawah -->
+        <div class="text-overlay-bottom-left">${zodiacSign}</div>
+    </div>
+
+    <div class="toppro">
+        <div class="toppro-left">
+            <h1>Certificate</h1>
+        </div>
+        <h2>${student.nama_lengkap}</h2>
+        <div class="subtext">${student.kelas}, ${student.jabatan_di_kelas}</div>
+
+        <div class="friends-container">
+            <div class="playlist">
+                <a href="${student.playlist_musik}" target="_blank">Dengarkan Playlist</a>
+            </div>
+            <ul class="closest-friends-list">
+                ${friends.slice(0, 3).map(friend => `
+                <li class="friend-card">
+                    <a href="siswa.html?id=${friend.id_siswa}" class="friend-link">
+                        <img src="${friend.foto_profil}" alt="${friend.nama_lengkap}" class="friend-image">
+                    </a>
+                </li>
+                `).join('')}
+            </ul>
+
+            ${friends.length > 3 ? `
+            <div class="more-friends-container">
+                <a href="teman.html?id=${student.id_siswa}" class="more-friends-link">
+                    +${friends.length - 3}
+                </a>
+            </div>
+            ` : ''}
+        </div>
+
+        <div>🚀 ${student.quote_favorit}</div>
 
         <div>
-
+            <a href="https://linktr.ee/codegem">linktr.ee/codegem</a>
+            <span class="secondary">
+                <p>${age} tahun, ${zodiacSign}</p>
+                <p>Ultah berikutnya: ${daysUntilBirthday} hari</p>
+                ${daysUntilBirthday === 0 ? '<p>Selamat Ulang Tahun!</p>' : ''}
+            </span>
         </div>
-        <div class="toppro">
-            <div class="toppro-left">
-                <h1>Certificate</h1>
-            </div>
-            <h2>${student.nama_lengkap}</h2>
-            <div class="subtext">${student.kelas}, ${student.jabatan_di_kelas}</div>
 
-            <div class="friends-container">
-                <div class="playlist">
-                    <a href="${student.playlist_musik}" target="_blank">Dengarkan Playlist</a>
-                </div>
-                <ul class="closest-friends-list">
-                    ${friends.slice(0, 3).map(friend => `
-                    <li class="friend-card">
-                        <a href="siswa.html?id=${friend.id_siswa}" class="friend-link">
-                            <img src="${friend.foto_profil}" alt="${friend.nama_lengkap}" class="friend-image">
-                        </a>
-                    </li>
-                    `).join('')}
+        <div class="hobi-container">
+            <div class="hobi">
+                <ul>
+                    ${student.hobi_dan_minat.map(hobi => `<li>${hobi}</li>`).join('')}
                 </ul>
-
-                ${friends.length > 3 ? `
-                <div class="more-friends-container">
-                    <a href="teman.html?id=${student.id_siswa}" class="more-friends-link">
-                        +${friends.length - 3}
-                    </a>
-                </div>
-                ` : ''}
-
-
-            </div>
-
-            <div></div>
-
-            <div>🚀 ${student.quote_favorit}</div>
-
-            <div>
-                <a href="https://linktr.ee/codegem">linktr.ee/codegem</a>
-                <span class="secondary">
-                    <p>${age} tahun, ${zodiacSign}</p>
-                    <p>Ultah berikutnya: ${daysUntilBirthday} hari</p>
-                    ${daysUntilBirthday === 0 ? '<p>Selamat Ulang Tahun!</p>' : ''}
-                </span>
-            </div>
-
-            <div class="hobi-container">
-                <div class="hobi">
-                    <ul>
-                        ${student.hobi_dan_minat.map(hobi => `<li>${hobi}</li>`).join('')}
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
@@ -176,9 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
 
     <div class="tab-content active" id="tweets">
-
-    
-    <section class="container-section">
+        <section class="container-section">
             <div class="badge-container">
                 <div class="section-title">
                     <h2>Badge</h2>
@@ -194,7 +181,6 @@ document.addEventListener('DOMContentLoaded', function () {
         </section>
 
         <section class="container-section">
-
             <div class="section-title">
                 <h2>Statistik Akademis</h2>
                 <h1>Statistik</h1>
@@ -227,10 +213,9 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         </section>
 
-
         <section class="container-section">
             <div class="section-title">
-                <h2>Ekstrakulikuler</h2>
+                <h2>Ekstrakurikuler</h2>
                 <h1>Ekstra</h1>
             </div>
             <ul class="extracurricular-list">
@@ -262,18 +247,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 `).join('')}
             </ul>
         </section>
-
     </div>
 
-
-
-
-
-
     <div class="tab-content" id="media">
-
-
-
+        <!-- Content for media -->
     </div>
     <div class="tab-content" id="likes">
         Content for Likes
@@ -281,15 +258,6 @@ document.addEventListener('DOMContentLoaded', function () {
     <div class="tab-content" id="replies">
         Content for Tweets & replies
     </div>
-
-
-
-
-
-
-
-
-
 </div>
 
             `;
